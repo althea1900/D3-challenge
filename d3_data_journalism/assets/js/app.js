@@ -29,4 +29,15 @@ d3.csv("/assets/data/data.csv").then(function(censusData) {
         data.poverty = +data.poverty;
         data.healthcare = +data.healthcare;
       });
+
+        // Step 2: Create scale functions
+    // ==============================
+    var xLinearScale = d3.scaleLinear()
+      .domain([20, d3.max(hairData, d => d.hair_length)])
+      .range([0, width]);
+
+    var yLinearScale = d3.scaleLinear()
+      .domain([0, d3.max(hairData, d => d.num_hits)])
+      .range([height, 0]);
+  
 });
