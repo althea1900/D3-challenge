@@ -57,14 +57,15 @@ d3.csv("/assets/data/data.csv").then(function(censusData) {
     // Step 5: Create Circles
     // ==============================
     var circlesGroup = chartGroup.selectAll("circle")
-    .data(hairData)
+    .data(censusData)
     .enter()
     .append("circle")
-    .attr("cx", d => xLinearScale(d.hair_length))
-    .attr("cy", d => yLinearScale(d.num_hits))
+    .attr("cx", d => xLinearScale(d.poverty))
+    .attr("cy", d => yLinearScale(d.healthcare))
     .attr("r", "15")
-    .attr("fill", "pink")
-    .attr("opacity", ".8");
+    .attr("fill", "orange")
+    .attr("opacity", ".8")
+    .attr("stroke", "white");
 
 
 
