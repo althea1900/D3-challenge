@@ -39,5 +39,14 @@ d3.csv("/assets/data/data.csv").then(function(censusData) {
     var yLinearScale = d3.scaleLinear()
       .domain([0, d3.max(censusData, d => d.healthcare)])
       .range([height, 0]);
+
+    // Step 3: Create axis functions
+    // ==============================
+    var bottomAxis = d3.axisBottom(xLinearScale);
+    var leftAxis = d3.axisLeft(yLinearScale);
+
+
+
+
   
 });
