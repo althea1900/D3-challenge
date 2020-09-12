@@ -26,7 +26,7 @@ d3.csv("/assets/data/data.csv").then(function(censusData) {
     // Step 1: Parse Data/Cast as numbers
     // ==============================
     censusData.forEach(function(data) {
-        data.hair_length = +data.hair_length;
-        data.num_hits = +data.num_hits;
+        data.poverty = +data.poverty;
+        data.healthcare = +data.healthcare;
       });
 });
