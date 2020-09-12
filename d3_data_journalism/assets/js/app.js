@@ -69,6 +69,7 @@ d3.csv("/assets/data/data.csv").then(function(censusData) {
 
     // Add States to the circles
     chartGroup.selectAll("text")
+        .selectAll("tspan")    
         .data(censusData)
         .enter()
         .append("tspan")
@@ -76,7 +77,7 @@ d3.csv("/assets/data/data.csv").then(function(censusData) {
             return xLinearScale(data.poverty)
         })
         .attr("y", function(data){
-            return yLinearScale(data.healthcare)
+            return yLinearScale(data.healthcare -.02);
         })
         .text(function(data){
             return data.abbr
@@ -87,6 +88,9 @@ d3.csv("/assets/data/data.csv").then(function(censusData) {
     var toolTip = d3.tip()
       .attr("class", "tooltip")
       .offset([80, -60])
+      .style("position", "absolute")
+      .style("background", "lightsteelblue")
+      .style("pointer-events", "none")
       .html(function(d) {
         return (`${d.state}<br>Percentage Poverty: ${d.poverty}<br>Percentage w/o Healthcare: ${d.healthcare}`);
       });
