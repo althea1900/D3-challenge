@@ -68,20 +68,20 @@ d3.csv("/assets/data/data.csv").then(function(censusData) {
         .attr("stroke", "white");
 
     // // Add States to the circles
-    // chartGroup.selectAll("text")
-    //     .selectAll("tspan")    
-    //     .data(censusData)
-    //     .enter()
-    //     .append("tspan")
-    //     .attr("x", function(data){
-    //         return xLinearScale(data.poverty)
-    //     })
-    //     .attr("y", function(data){
-    //         return yLinearScale(data.healthcare -.02);
-    //     })
-    //     .text(function(data){
-    //         return data.abbr
-    //     });
+    chartGroup.append("text")
+        .selectAll("tspan")    
+        .data(censusData)
+        .enter()
+        .append("tspan")
+        .attr("x", function(data){
+            return xLinearScale(data.poverty)
+        })
+        .attr("y", function(data){
+            return yLinearScale(data.healthcare -.02);
+        })
+        .text(function(data){
+            return data.abbr
+        });
 
     // Step 6: Initialize tool tip
     // ==============================
