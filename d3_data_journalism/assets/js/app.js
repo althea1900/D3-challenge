@@ -62,14 +62,17 @@ d3.csv("/assets/data/data.csv").then(function(censusData) {
         .append("circle")
         .attr("cx", d => xLinearScale(d.poverty))
         .attr("cy", d => yLinearScale(d.healthcare))
-        .attr("r", "15")
+        .attr("r", "10")
         .attr("fill", "orange")
-        .attr("opacity", ".8")
+        .attr("opacity", ".5")
         .attr("stroke", "white");
 
     // // Add States to the circles
     chartGroup.append("text")
-        .selectAll("tspan")    
+        .style("text-anchor", "middle")
+        .style("font-family", "sans-serif")
+        .style("font-size", "8px")
+        .selectAll("tspan") 
         .data(censusData)
         .enter()
         .append("tspan")
