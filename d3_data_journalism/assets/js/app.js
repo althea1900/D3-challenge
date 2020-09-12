@@ -57,15 +57,31 @@ d3.csv("/assets/data/data.csv").then(function(censusData) {
     // Step 5: Create Circles
     // ==============================
     var circlesGroup = chartGroup.selectAll("circle")
-    .data(censusData)
-    .enter()
-    .append("circle")
-    .attr("cx", d => xLinearScale(d.poverty))
-    .attr("cy", d => yLinearScale(d.healthcare))
-    .attr("r", "15")
-    .attr("fill", "orange")
-    .attr("opacity", ".8")
-    .attr("stroke", "white");
+        .data(censusData)
+        .enter()
+        .append("circle")
+        .attr("cx", d => xLinearScale(d.poverty))
+        .attr("cy", d => yLinearScale(d.healthcare))
+        .attr("r", "15")
+        .attr("fill", "orange")
+        .attr("opacity", ".8")
+        .attr("stroke", "white");
+
+    // Add States to the circles
+    chartGroup.selectAll("text")
+        .data(censusData)
+        .enter()
+        .append("tspan")
+        .attr("x", function(data){
+            return xLinearScale(data.poverty)
+        })
+        .attr("y", function(data){
+            return yLinearScale(data.healthcare)
+        })
+        .text(function(data){
+            return data.abbr
+        });
+
 
 
 
