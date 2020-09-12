@@ -33,11 +33,11 @@ d3.csv("/assets/data/data.csv").then(function(censusData) {
         // Step 2: Create scale functions
     // ==============================
     var xLinearScale = d3.scaleLinear()
-      .domain([20, d3.max(censusData, d => d.poverty)])
+      .domain([8, d3.max(censusData, d => d.poverty)])
       .range([0, width]);
 
     var yLinearScale = d3.scaleLinear()
-      .domain([0, d3.max(censusData, d => d.healthcare)])
+      .domain([3, d3.max(censusData, d => d.healthcare)])
       .range([height, 0]);
 
     // Step 3: Create axis functions
@@ -67,21 +67,21 @@ d3.csv("/assets/data/data.csv").then(function(censusData) {
         .attr("opacity", ".8")
         .attr("stroke", "white");
 
-    // Add States to the circles
-    chartGroup.selectAll("text")
-        .selectAll("tspan")    
-        .data(censusData)
-        .enter()
-        .append("tspan")
-        .attr("x", function(data){
-            return xLinearScale(data.poverty)
-        })
-        .attr("y", function(data){
-            return yLinearScale(data.healthcare -.02);
-        })
-        .text(function(data){
-            return data.abbr
-        });
+    // // Add States to the circles
+    // chartGroup.selectAll("text")
+    //     .selectAll("tspan")    
+    //     .data(censusData)
+    //     .enter()
+    //     .append("tspan")
+    //     .attr("x", function(data){
+    //         return xLinearScale(data.poverty)
+    //     })
+    //     .attr("y", function(data){
+    //         return yLinearScale(data.healthcare -.02);
+    //     })
+    //     .text(function(data){
+    //         return data.abbr
+    //     });
 
     // Step 6: Initialize tool tip
     // ==============================
